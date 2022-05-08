@@ -38,7 +38,10 @@ def scrape_webpage(url):
                     source_split = source.split('#')
                     source = source_split[1]
                     source_changed = True
-                break # found the source, break out
+                break  # found the source, break out
+
+        if 'Source' in source:
+            source = source.replace("Source", "", 1)
 
         if source_changed == False:
             source = ""
@@ -94,11 +97,9 @@ def download_file(url, file_name):
 
 
 def main():
+    # CHANGE THIS PART TO BE YOUR PATH
     print("getting URLs from file")
-    
-    # CHANGE THIS PART TO BE YOUR PATH!
-    get_urls_from_file(r"C:\Users\username\sakugabooru_download\urls.txt")  # creates list of all urls
-    
+    get_urls_from_file(r"C:\Users\nicks\PycharmProjects\anime_shit\urls.txt")  # creates list of all urls
     all_info = []  # list of dicts eg [{'tag': tag, 'source': source, 'video_url': video_url, 'file_ext': file_ext}]
 
     print("starting scraping the urls for all the info we want")
